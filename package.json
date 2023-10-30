@@ -1,5 +1,5 @@
 {
-    "name": "@trustee/react-native-pdf",
+    "name": "react-native-trustee-pdf",
     "version": "6.7.2",
     "summary": "A react native PDF view component",
     "description": "A react native PDF view component, support ios and android platform",

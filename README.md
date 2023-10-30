@@ -1,5 +1,5 @@
 # react-native-pdf
-[![npm](https://img.shields.io/npm/v/react-native-pdf.svg?style=flat-square)](https://www.npmjs.com/package/react-native-pdf)
+[![npm](https://img.shields.io/npm/v/react-native-pdf.svg?style=flat-square)](https://www.npmjs.com/package/react-native-trustee-pdf)
 
 A react native PDF view component (cross-platform support)
 
@@ -12,17 +12,6 @@ A react native PDF view component (cross-platform support)
 * support password protected pdf
 * jump to a specific page in the pdf
 
-### Supported versions
-We use [`react-native-blob-util`](https://github.com/RonRadtke/react-native-blob-util) to handle file system access in this package,
-So you should install react-native-pdf and react-native-blob-util
-
-> The table below shows the supported versions of React Native and react-native-blob-util for different versions of `react-native-pdf`.
-
-| React Native              | 0.4x - 0.56     | 0.57    | 0.60+    | 0.62+    | 0.62+    |
-| ------------------------- | --------------- | ------- | -------- | -------- | -------- |
-| react-native-pdf          | 4.x.x - 5.0.x   | 5.0.9+  | 6.0.0+   | 6.2.0+   | 6.4.0+   |
-| react-native-blob-util    |                 |         |          |          | 0.13.7+  |
-
 
 > 🚨 Expo: This package is not available in the [Expo Go](https://expo.dev/client) app. Learn how you can use this package in [Custom Dev Clients](https://docs.expo.dev/development/getting-started/) via the out-of-tree [Expo Config Plugin](https://github.com/expo/config-plugins/tree/master/packages/react-native-pdf). Example: [`with-pdf`](https://github.com/expo/examples/tree/master/with-pdf).
 
@@ -30,10 +19,10 @@ So you should install react-native-pdf and react-native-blob-util
 
 ```bash
 # Using npm
-npm install react-native-pdf react-native-blob-util --save
+npm install react-native-trustee-pdf --save
 
 # or using yarn:
-yarn add react-native-pdf react-native-blob-util
+yarn add react-native-trustee-pdf
 ```
 
 Then follow the instructions for your platform to link react-native-pdf into your project:
@@ -49,8 +38,7 @@ Run `pod install` in the `ios` directory. Linking is not required in React Nativ
 **React Native 0.59 and below**
 
 ```bash
-react-native link react-native-blob-util
-react-native link react-native-pdf
+react-native link react-native-trustee-pdf
 ```
 </details>
 
@@ -76,8 +64,7 @@ android {
 
 **React Native 0.59.0 and below**
 ```bash
-react-native link react-native-blob-util
-react-native link react-native-pdf
+react-native link react-native-trustee-pdf
 ```
 
 
@@ -155,7 +142,7 @@ Q4. why doesn't it work with react native expo?.
 A4. Expo does not support native module. you can read more expo caveats [`here`](https://facebook.github.io/react-native/docs/getting-started.html#caveats)
 
 Q5. Why can't I run the iOS example? `'Failed to build iOS project. We ran "xcodebuild" command but it exited with error code 65.'`  
-A5. Run the following commands in the project folder (e.g. `react-native-pdf/example`) to ensure that all dependencies are available:
+A5. Run the following commands in the project folder (e.g. `react-native-trustee-pdf/example`) to ensure that all dependencies are available:
 ```
 yarn install (or npm install)
 cd ios
@@ -165,79 +152,20 @@ react-native run-ios
 ```
 </details>
 
-### ChangeLog
-<details>
-  <summary>ChangeLog details</summary>
-
-v6.7.1
-1. Fixed: fix ios project setting
-2. Fixed: fix typo in RNPDFPdfViewManagerInterface interface causing android build error
-
-v6.7.0
-1. Fixed: fix(iOS): center page at tap point after double tap to zoom
-2. Fixed: add PDFKit to podspec to make ios compile
-3. Improved: Update build.gradle to support RN 0.71 on new arch
-4. Fixed: fix some small bugs and documents.
-
-v6.6.2
-1. Fixed: Migrate to ViewPropTypes exported from 'deprecated-react-native-prop-types'
-2. Added: Decode File Path for iOS
-3. Improved: prefer current page for calculating scale factor on fit
-
-v6.6.1 depresed
-
-v6.6.0 depresed
-1. Fixed: Migrate to ViewPropTypes exported from 'deprecated-react-native-prop-types'
-2. Added: Decode File Path for iOS
-3. Improved: prefer current page for calculating scale factor on fit
-4. Improved: Typescript version source
-
-v6.5.0
-1. Fix: replace mavenCentral with maven
-2. Breaking Change(Android): replace deprecated repository: jcenter()
-3. Fix: loading progress
-4. Add: Typed "source" prop
-5. Remove: dependency to fbjs
-
-v6.4.0
-1. Remove sample for reducing NPM package size
-2. Add support for setting a filename for the cached pdf file
-3. Use react-native-blob-util instead of rn-fetch-blob
-4. Add blob support
-5. remove progress-view dependency
-
-v6.3.0
-1. Add windows support
-2. Fixed some bugs
-
-[[more]](https://github.com/wonday/react-native-pdf/releases)
-
-</details>
-
 ### Example
 
 ```js
-/**
- * Copyright (c) 2017-present, Wonday (@wonday.org)
- * All rights reserved.
- *
- * This source code is licensed under the MIT-style license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 import React from 'react';
 import { StyleSheet, Dimensions, View } from 'react-native';
-import Pdf from 'react-native-pdf';
+import Pdf from 'react-native-trustee-pdf';
 
 export default class PDFExample extends React.Component {
     render() {
-        const source = { uri: 'http://samples.leanpub.com/thereactnativebook-sample.pdf', cache: true };
+        const source = {uri:"data:application/pdf;base64,JVBERi0xLjcKJc..."};
+
         //const source = require('./test.pdf');  // ios only
         //const source = {uri:'bundle-assets://test.pdf' };
         //const source = {uri:'file:///sdcard/test.pdf'};
-        //const source = {uri:"data:application/pdf;base64,JVBERi0xLjcKJc..."};
-        //const source = {uri:"content://com.example.blobs/xxxxxxxx-...?offset=0&size=xxx"};
-        //const source = {uri:"blob:xxxxxxxx-...?offset=0&size=xxx"};
 
         return (
             <View style={styles.container}>
@@ -325,15 +253,12 @@ const styles = StyleSheet.create({
 
 | Usage        | Description | iOS | Android | Windows |
 | ------------ | ----------- | --- | ------- | ------- |
-| `{uri:"http://xxx/xxx.pdf"}` | load pdf from a url | ✔   | ✔ | ✔ |
 | `{require("./test.pdf")}` | load pdf relate to js file (do not need add by xcode) | ✔ | ✖ | ✖ |
 | `{uri:"bundle-assets://path/to/xxx.pdf"}` | load pdf from assets, the file should be at android/app/src/main/assets/path/to/xxx.pdf | ✖ | ✔ | ✖ |
 | `{uri:"bundle-assets://xxx.pdf"}` | load pdf from assets, you must add pdf to project by xcode. this does not support folder. | ✔ | ✖ | ✖ |
 | `{uri:"data:application/pdf;base64,JVBERi0xLjcKJc..."}` | load pdf from base64 string | ✔   | ✔ | ✔ |
 | `{uri:"file:///absolute/path/to/xxx.pdf"}` | load pdf from local file system | ✔  | ✔ | ✔  |
 | `{uri:"ms-appx:///xxx.pdf"}}` | load pdf bundled with UWP app |  ✖ | ✖ | ✔ |
-| `{uri:"content://com.example.blobs/xxxxxxxx-...?offset=0&size=xxx"}` | load pdf from content URI | ✔* | ✖ | ✖ |
-| `{uri:"blob:xxxxxxxx-...?offset=0&size=xxx"}` | load pdf from blob URL | ✖ | ✔ | ✖ |
 
 \*) requires building React Native from source with [this patch](https://github.com/facebook/react-native/pull/31789)
 ### Methods
