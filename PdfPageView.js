@@ -1,41 +1,14 @@
-/**
- * Copyright (c) 2017-present, Wonday (@wonday.org)
- * All rights reserved.
- *
- * This source code is licensed under the MIT-style license found in the
- * LICENSE file in the root directory of this source tree.
- */
+'use strict'
+import React from 'react'
+import PropTypes from 'prop-types'
+import { requireNativeComponent } from 'react-native'
+import { ViewPropTypes } from 'deprecated-react-native-prop-types'
 
+let PdfPageViewCustom = requireNativeComponent('RCTPdfPageView', PdfPageView, { nativeOnly: {} })
 
-'use strict';
-import React, {PureComponent} from 'react';
-import PropTypes from 'prop-types';
-import {
-    requireNativeComponent,
-} from 'react-native';
-import {ViewPropTypes} from 'deprecated-react-native-prop-types';
-export default class PdfPageView extends PureComponent {
-    _getStylePropsProps = () => {
-        const {width, height} = this.props;
-        if (width || height) {
-            return {width, height};
-        }
-        return {};
-    };
-
-    render() {
-        const {
-            style,
-            ...restProps
-        } = this.props;
-        return (
-            <PdfPageViewCustom
-                {...restProps}
-                style={[style, this._getStylePropsProps()]}
-            />
-        );
-
-    }
+const PdfPageView = (props) => {
+    const { style, ...restProps } = props
+    return <PdfPageViewCustom {...restProps} style={[style, { width: props?.width || '100%', height: props?.height || '100%' }]} />
 }
 
 PdfPageView.propTypes = {
@@ -44,10 +17,10 @@ PdfPageView.propTypes = {
     page: PropTypes.number,
     width: PropTypes.number,
     height: PropTypes.number
-};
+}
 
 PdfPageView.defaultProps = {
     style: {}
-};
+}
 
-let PdfPageViewCustom = requireNativeComponent('RCTPdfPageView', PdfPageView, {nativeOnly: {}});
+export default React.memo(PdfPageView)

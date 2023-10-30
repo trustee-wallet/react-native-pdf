@@ -1,13 +1,13 @@
 {
-    "name": "react-native-pdf",
-    "version": "6.7.1",
+    "name": "@trustee/react-native-pdf",
+    "version": "6.7.2",
     "summary": "A react native PDF view component",
     "description": "A react native PDF view component, support ios and android platform",
     "main": "index.js",
     "typings": "./index.d.ts",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/wonday/react-native-pdf.git"
+        "url": "git+https://github.com/trustee-wallet/react-native-pdf"
     },
     "keywords": [
         "react-component",
@@ -19,17 +19,18 @@
         "viewer"
     ],
     "author": {
-        "name": "Wonday",
-        "url": "https://github.com/wonday"
+        "name": "Trustee",
+        "url": "https://github.com/trustee-wallet"
     },
     "license": "MIT",
-    "homepage": "https://github.com/wonday/react-native-pdf",
+    "homepage": "https://github.com/trustee-wallet/react-native-pdf",
     "bugs": {
-        "url": "https://github.com/wonday/react-native-pdf/issues"
+        "url": "https://github.com/trustee-wallet/react-native-pdf/issues"
     },
     "dependencies": {
         "crypto-js": "^3.2.0",
-        "deprecated-react-native-prop-types": "^2.3.0"
+        "deprecated-react-native-prop-types": "^2.3.0",
+        "react-native-fs": "*"
     },
     "devDependencies": {
         "@babel/core": "^7.20.2",
@@ -39,7 +40,7 @@
     "peerDependencies": {
         "react": "*",
         "react-native": "*",
-        "react-native-blob-util": ">=0.13.7"
+        "react-native-fs": "*"
     },
     "files": [
         "android/",
@@ -62,7 +63,7 @@
         "type": "components",
         "jsSrcsDir": "./fabric",
         "android": {
-          "javaPackageName": "org.wonday.pdf"
+          "javaPackageName": "org.trustee.pdf"
         }
       }
 }

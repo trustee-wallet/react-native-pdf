@@ -6,21 +6,20 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-'use strict';
+'use strict'
 
-const PdfManagerNative = require('react-native').NativeModules.PdfManager;
+const PdfManagerNative = require('react-native').NativeModules.PdfManager
 
 export default class PdfManager {
-
     static loadFile(path, password) {
         if (typeof path !== 'string') {
-            throw new TypeError('path must be a valid string.');
+            throw new TypeError('path must be a valid string.')
         }
 
         if (password === undefined) {
-            password = "";
+            password = ''
         }
 
-        return PdfManagerNative.loadFile(path, password);
+        return PdfManagerNative.loadFile(path, password)
     }
 }
